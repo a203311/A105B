@@ -3,3 +3,6 @@ requests>=2.28
 fastapi>=0.95
 uvicorn[standard]>=0.22
 python-dotenv>=1.0
+# Dev/test tools
+pytest>=7.0
+flake8>=6.0

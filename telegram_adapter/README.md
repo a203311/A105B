@@ -53,6 +53,23 @@ curl -F "url=$WEBHOOK_URL" -F "secret_token=$TELEGRAM_WEBHOOK_SECRET" https://ap
 
 The webhook endpoint is `POST /telegram/webhook` and will verify the `X-Telegram-Bot-Api-Secret-Token` header.
 
+---
+
+## CI & Heroku deployment
+
+A GitHub Actions workflow is included at `.github/workflows/ci.yml` which:
+- Runs linting with `flake8` and tests with `pytest` on push/PR.
+- Deploys to Heroku (Docker-based) automatically when changes are pushed to `main`.
+
+To enable automatic Heroku deploys, add these GitHub repository secrets:
+- `HEROKU_API_KEY` — your Heroku API key (can be created in Heroku account settings).
+- `HEROKU_APP_NAME` — the name of your Heroku app.
+- `HEROKU_EMAIL` — the email on your Heroku account.
+
+Notes:
+- The workflow uses `telegram_adapter/Dockerfile` for the Heroku Docker deploy step.
+- You can also use Heroku Git/GitHub integration if preferred.
+
 ## Notes
 - Keep your `TELEGRAM_TOKEN` secret. Use environment variables or secrets for deployment.
 - When you have a `clawd` HTTP API, set `CLAWD_URL` to integrate directly.
