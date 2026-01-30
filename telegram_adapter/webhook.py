@@ -23,12 +23,17 @@ TELEGRAM_API = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}"
 
 app = FastAPI()
 
+
 class Message(BaseModel):
     message: Optional[dict]
 
 
 @app.post("/telegram/webhook")
-async def telegram_webhook(req: Request, update: Message, x_telegram_bot_api_secret_token: Optional[str] = Header(None)):
+async def telegram_webhook(
+    req: Request,
+    update: Message,
+    x_telegram_bot_api_secret_token: Optional[str] = Header(None),
+):
     # Verify secret token if configured
     if WEBHOOK_SECRET:
         if x_telegram_bot_api_secret_token != WEBHOOK_SECRET:
