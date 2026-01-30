@@ -2,7 +2,8 @@
 
 Usage:
   - Set environment variable TELEGRAM_TOKEN
-  - Optionally set CLAWD_URL (HTTP endpoint) or CLAWD_CMD (CLI command). If neither is set, the adapter echoes messages as a placeholder.
+  - Optionally set CLAWD_URL (HTTP endpoint) or CLAWD_CMD (CLI command).
+    If neither is set, the adapter echoes messages as a placeholder.
 
 Run:
   python telegram_adapter/bot.py
@@ -28,8 +29,10 @@ logger = logging.getLogger(__name__)
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("✅ clawd.bot Adapter 已连接。发送消息以获取回复。")
 
+
 async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("发送任意文本，适配器会把文本转交给 clawd（本地或远端），并把回复返回给你。")
+
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_text = update.message.text
