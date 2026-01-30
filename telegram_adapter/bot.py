@@ -20,7 +20,7 @@ from telegram.ext import (
     filters,
 )
 
-from clawd import get_clawd_reply
+from telegram_adapter.clawd import get_clawd_reply
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

@@ -18,11 +18,13 @@ pip install -r requirements.txt
 
 2. Copy `.env.example` to `.env` and set `TELEGRAM_TOKEN`.
 
-3. Run the bot:
+3. Run the bot (from repo root):
 
 ```bash
-python bot.py
+python -m telegram_adapter.bot
 ```
+
+(Or, `cd telegram_adapter && python bot.py` will also work if you prefer to run from inside the directory.)
 
 4. (Optional) Use `ngrok http 8080` and configure webhook if you want to switch to webhook mode, but the adapter currently uses polling by default.
 
